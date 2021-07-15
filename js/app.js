@@ -22,3 +22,20 @@ $('[data-group]').each(function(){
 });
 
 // scroll
+//pegar a ação do usuario, clicando no menu
+$('.menu-nav a').click(function(e){
+	//sempre que tiver o a com o #, previna o padrão
+	e.preventDefault();
+	//pegar o href do que a clicou e variavel que guarda a distancia dos blocos e o topo, vai ter um calculo que diz a distancia exata dos elementos e do topo
+	//pega o tamanho do menu para modificar no offwset
+	var id = $(this).attr('href'),
+		menuheight = $('.menu').innerHeight(),
+		targetOffset = $(id).offset().top
+	;
+
+	//anima o sroll top
+	$('html, body').animate({
+		scrollTop: targetOffset - menuheight
+	}, 500);
+
+});
