@@ -22,8 +22,8 @@ $('[data-group]').each(function(){
 });
 
 // scroll
-//pegar a ação do usuario, clicando no menu
-$('.menu-nav a').click(function(e){
+//pegar a ação do usuario, clicando no menu em especifico os a que tem #
+$('.menu-nav a[href^="#"]').click(function(e){
 	//sempre que tiver o a com o #, previna o padrão
 	e.preventDefault();
 	//pegar o href do que a clicou e variavel que guarda a distancia dos blocos e o topo, vai ter um calculo que diz a distancia exata dos elementos e do topo
@@ -38,4 +38,10 @@ $('.menu-nav a').click(function(e){
 		scrollTop: targetOffset - menuheight
 	}, 500);
 
+});
+
+//btn scroll up
+$('.logo').click(function(e){
+	e.preventDefault();
+	$('html, body').animate({scrollTop: 0 }, 500);
 });
