@@ -53,12 +53,26 @@ $('section').each(function(){
 	var alturaSessao = $(this).height();
 	//distancia entre a sesao e o top
 	var offsetTop = $(this).offset().top;
+	//altura menu
+	var menuHeight = $('.menu').innerHeight();
 	//identificar id do a com o da seção
 	var id = $(this).attr('id');
+	//item menu que quer selecionar
+	var $itemMenu = $('a[href="#'+ id +'"]');
 
-	console.log(alturaSessao);
-	console.log(offsetTop);
-	console.log(id);
+	//verificando encima do scroll, toda vez que ele scrolar verifica
+	$(window).scroll(function(){
+		var  scrollTop = $(window).scrollTop();
+		
+		//verificação
+		if(offsetTop - menuHeight < scrollTop && offsetTop + alturaSessao - menuHeight > scrollTop){
+			$itemMenu.addClass('active');
+		} else {
+			//remover
+			$itemMenu.removeClass('active');
+		}
+	});
+
 
 
 });
