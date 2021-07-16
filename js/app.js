@@ -45,3 +45,20 @@ $('.logo').click(function(e){
 	e.preventDefault();
 	$('html, body').animate({scrollTop: 0 }, 500);
 });
+
+// Ficar selecionado quando chegar na parte da seção especifica
+//identificar as seções 
+$('section').each(function(){
+	//variaveis que pega altura total
+	var alturaSessao = $(this).height();
+	//distancia entre a sesao e o top
+	var offsetTop = $(this).offset().top;
+	//identificar id do a com o da seção
+	var id = $(this).attr('id');
+
+	console.log(alturaSessao);
+	console.log(offsetTop);
+	console.log(id);
+
+
+});
