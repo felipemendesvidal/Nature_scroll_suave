@@ -249,20 +249,20 @@ img {
 
 /* animação */
 /* tira a barra de cima */
-.menu-mobile-btn:hover{
+.menu-mobile-btn.active{
 	border-top-color: transparent;
 
 }
 
 /* rotação inicial de um dos lados  */
-.menu-mobile-btn:hover::after{
+.menu-mobile-btn.active::after{
 	margin-top: 0;
 	top: 2px;
 	transform:  rotate(45deg);
 }
 
 /* outra rotação */
-.menu-mobile-btn:hover::before{
+.menu-mobile-btn.active::before{
 	margin-top: 0;
 	top: 6px;
 	transform: rotate(135deg);
