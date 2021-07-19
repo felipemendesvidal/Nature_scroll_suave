@@ -218,3 +218,52 @@ img {
 	top: auto;
 	transform: translate3d(0px,0,0);
 }
+
+/* menu */
+/* primeira barra de cima, areas de contado */
+.menu-mobile-btn{
+	display: block;
+	/* tamanho certo de um dedo */
+	width: 36px;
+	height: 36px;
+	margin: 20px 20px 0 0;
+	border-top: 4px solid;
+	color:white;
+	float: left;
+	position: relative;
+	cursor: pointer;
+	/* para nao bugar  no cromer*/
+	-webkit-backface-visibility: hidden;
+}
+/* barras do meio e de baixo */
+.menu-mobile-btn::after, .menu-mobile-btn::before{
+	content: '';
+	display: block;
+	height: 4px;
+	/* pega a cor atribuida no primeiro elemento */
+	background: currentColor;
+	position: relative;
+	transition: transform .2s ease;
+	margin-top: 6px;
+}
+
+/* animação */
+/* tira a barra de cima */
+.menu-mobile-btn:hover{
+	border-top-color: transparent;
+
+}
+
+/* rotação inicial de um dos lados  */
+.menu-mobile-btn:hover::after{
+	margin-top: 0;
+	top: 2px;
+	transform:  rotate(45deg);
+}
+
+/* outra rotação */
+.menu-mobile-btn:hover::before{
+	margin-top: 0;
+	top: 6px;
+	transform: rotate(135deg);
+}
