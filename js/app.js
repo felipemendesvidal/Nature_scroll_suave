@@ -72,7 +72,11 @@ $('section').each(function(){
 			$itemMenu.removeClass('active');
 		}
 	});
-
-
-
 });
+
+// colocando clas active para fazer troca do x para barras
+$('.menu-mobile-btn').click(function(){
+	$(this).toggleClass('active');
+	$('.mobile-menu').toggleClass('active')
+	$
+})
