@@ -79,4 +79,25 @@ $('.menu-mobile-btn').click(function(){
 	$(this).toggleClass('active');
 	$('.mobile-menu').toggleClass('active')
 	$
-})
+});
+
+
+// slide
+// adicionando class active a div do slide
+$('.slide > :first').addClass('active');
+
+// função que faz rodar os slide
+function rodaSlide(){
+
+	var activeSlide = $('.slide > .active'), nextSlide = activeSlide.next();
+	//verifica se o proximo elemento não existe
+	if(nextSlide.length == 0){
+		nextSlide = $('.slide > :first');
+	}
+	activeSlide.removeClass('active');
+	nextSlide.addClass('active')
+
+}//fim função
+
+// roda o slide
+setInterval(rodaSlide, 3000);

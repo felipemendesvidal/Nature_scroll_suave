@@ -318,3 +318,23 @@ p {
 	margin: 0 auto;
 	max-width: 100%;
 }
+
+/* stilo do slide */
+.slide{
+ position: relative;
+ overflow: hidden;
+
+}
+/* > seleciona cada item dentro da tag
+   * Seleciona todos os itens, seletor universal
+*/
+.slide > * {
+	width: 100%;
+	position: absolute;
+	opacity: 0;
+	transition: .5s; /*tempo de transicao*/
+}
+.slide > .active{
+	position: relative;
+	opacity: 1;	
+}
