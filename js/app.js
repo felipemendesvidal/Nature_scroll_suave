@@ -83,10 +83,10 @@ $('.menu-mobile-btn').click(function(){
 
 
 // slide
-function slider(sliderName){
+function slider(sliderName,velocidade){
 	var sliderClass = '.' + sliderName, 
 		activeClass = 'active';
-		rotate = setInterval(rodaSlide, 3000);
+		rotate = setInterval(rodaSlide, velocidade);
 	// adicionando class active a div do slide
 	$( sliderClass + '> :first').addClass(activeClass);
 
@@ -94,7 +94,7 @@ function slider(sliderName){
 	$(sliderClass).hover(function(){
 		clearInterval(rotate);
 	}, function(){
-		rotate = setInterval(rodaSlide, 2000);
+		rotate = setInterval(rodaSlide, velocidade);
 	});
 
 	// função que faz rodar os slide
@@ -112,6 +112,6 @@ function slider(sliderName){
 
 	// roda o slide
 }
-slider('introducao');
+slider('introducao',2000);
 
 
