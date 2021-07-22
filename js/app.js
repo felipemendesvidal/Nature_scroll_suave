@@ -88,7 +88,14 @@ function slider(sliderName){
 		activeClass = 'active';
 		rotate = setInterval(rodaSlide, 3000);
 	// adicionando class active a div do slide
-	$('.slide > :first').addClass(activeClass);
+	$( sliderClass + '> :first').addClass(activeClass);
+
+	// para no hover
+	$(sliderClass).hover(function(){
+		clearInterval(rotate);
+	}, function(){
+		rotate = setInterval(rodaSlide, 2000);
+	});
 
 	// função que faz rodar os slide
 	function rodaSlide(){
