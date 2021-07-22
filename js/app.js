@@ -83,21 +83,28 @@ $('.menu-mobile-btn').click(function(){
 
 
 // slide
-// adicionando class active a div do slide
-$('.slide > :first').addClass('active');
+function slider(sliderName){
+	var sliderClass = '.' + sliderName, 
+		activeClass = 'active';
+		rotate = setInterval(rodaSlide, 3000);
+	// adicionando class active a div do slide
+	$('.slide > :first').addClass(activeClass);
 
-// função que faz rodar os slide
-function rodaSlide(){
+	// função que faz rodar os slide
+	function rodaSlide(){
 
-	var activeSlide = $('.slide > .active'), nextSlide = activeSlide.next();
-	//verifica se o proximo elemento não existe
-	if(nextSlide.length == 0){
-		nextSlide = $('.slide > :first');
-	}
-	activeSlide.removeClass('active');
-	nextSlide.addClass('active')
+		var activeSlide = $(sliderClass +' > .'+ activeClass), nextSlide = activeSlide.next();
+		//verifica se o proximo elemento não existe
+		if(nextSlide.length == 0){
+			nextSlide = $(sliderClass +' > :first');
+		}
+		activeSlide.removeClass(activeClass);
+		nextSlide.addClass(activeClass)
 
-}//fim função
+	}//fim função
 
-// roda o slide
-setInterval(rodaSlide, 3000);
+	// roda o slide
+}
+slider('introducao');
+
+
