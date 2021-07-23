@@ -114,32 +114,4 @@ function slider(sliderName,velocidade){
 }
 slider('introducao',2000);
 
-//animação ao scrolar
-var $seleciona_target = $('[data-anime="scroll"]'),
-	animacao_class = 'animate',
-	offset = $(window).height()* 3/4;
 
-// animação do scroll
-function animeScroll(){
-	// pega a distancia entre o scroll e o topo
-	var documentTop = $(window).scrollTop();
-
-	// seleciona ca um dos itens com target, ele vai aplicar essa função a cada elemento que ele achar com o valor da variavel
-	$seleciona_target.each(function(){
-		// DISTANCIA ENTRE O ELEMENTO E O TOPO
-		var itemTop = $(this).offset().top
-
-		// verifica se a distancia do top em relacao ao item top é maior ou menor
-		if(documentTop > itemTop - offset){
-			$(this).addClass(animacao_class);
-		}else{
-			$(this).removeClass(animacao_class);
-		}
-
-
-	});
-}//fim anime scrol
-animeScroll();
-$(document).scroll(function(){
-	animeScroll();
-});
