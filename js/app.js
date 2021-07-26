@@ -1,3 +1,19 @@
+//debounce do lodash
+debounce = function(func, wait, immediate) {
+	var timeout;
+	return function() {
+		var context = this, args = arguments;
+		var later = function() {
+			timeout = null;
+			if (!immediate) func.apply(context, args);
+		};
+		var callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+		if (callNow) func.apply(context, args);
+	};
+};
+
 // script tab - vide tab github
 $('[data-group]').each(function(){
 	var $allTarget = $(this).find('[data-target]'),
@@ -61,7 +77,7 @@ $('section').each(function(){
 	var $itemMenu = $('a[href="#'+ id +'"]');
 
 	//verificando encima do scroll, toda vez que ele scrolar verifica
-	$(window).scroll(function(){
+	$(window).scroll(debounce(function(){
 		var  scrollTop = $(window).scrollTop();
 		
 		//verificação
@@ -71,7 +87,7 @@ $('section').each(function(){
 			//remover
 			$itemMenu.removeClass('active');
 		}
-	});
+	}, 200));
 });
 
 // colocando clas active para fazer troca do x para barras
@@ -144,7 +160,7 @@ $('.menu-mobile-btn').click(function(){
 	});
 	}//fim anime scrol
 	animeScroll();
-	$(document).scroll(function(){
+	$(document).scroll(debounce(function(){
 	animeScroll();
-	});
+	}, 200));
 }) ();
