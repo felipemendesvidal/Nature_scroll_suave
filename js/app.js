@@ -81,46 +81,50 @@ $('.menu-mobile-btn').click(function(){
 	$
 });
 
+(function(){
+	// slide
+	function slider(sliderName,velocidade){
+		var sliderClass = '.' + sliderName, 
+			activeClass = 'active';
+			rotate = setInterval(rodaSlide, velocidade);
+		// adicionando class active a div do slide
+		$( sliderClass + '> :first').addClass(activeClass);
 
-// slide
-function slider(sliderName,velocidade){
-	var sliderClass = '.' + sliderName, 
-		activeClass = 'active';
-		rotate = setInterval(rodaSlide, velocidade);
-	// adicionando class active a div do slide
-	$( sliderClass + '> :first').addClass(activeClass);
+		// para no hover
+		$(sliderClass).hover(function(){
+			clearInterval(rotate);
+		}, function(){
+			rotate = setInterval(rodaSlide, velocidade);
+		});
 
-	// para no hover
-	$(sliderClass).hover(function(){
-		clearInterval(rotate);
-	}, function(){
-		rotate = setInterval(rodaSlide, velocidade);
-	});
+		// função que faz rodar os slide
+		function rodaSlide(){
 
-	// função que faz rodar os slide
-	function rodaSlide(){
+			var activeSlide = $(sliderClass +' > .'+ activeClass), nextSlide = activeSlide.next();
+			//verifica se o proximo elemento não existe
+			if(nextSlide.length == 0){
+				nextSlide = $(sliderClass +' > :first');
+			}
+			activeSlide.removeClass(activeClass);
+			nextSlide.addClass(activeClass)
 
-		var activeSlide = $(sliderClass +' > .'+ activeClass), nextSlide = activeSlide.next();
-		//verifica se o proximo elemento não existe
-		if(nextSlide.length == 0){
-			nextSlide = $(sliderClass +' > :first');
-		}
-		activeSlide.removeClass(activeClass);
-		nextSlide.addClass(activeClass)
+		}//fim função
 
-	}//fim função
+		// roda o slide
+	}
+	slider('introducao',2000);
 
-	// roda o slide
-}
-slider('introducao',2000);
+})();
 
-//animação ao scrolar
-var $seleciona_target = $('[data-anime="scroll"]'),
+
+(function(){
+	//animação ao scrolar
+	var $seleciona_target = $('[data-anime="scroll"]'),
 	animacao_class = 'animate',
 	offset = $(window).height()* 3/4;
 
-// animação do scroll
-function animeScroll(){
+	// animação do scroll
+	function animeScroll(){
 	// pega a distancia entre o scroll e o topo
 	var documentTop = $(window).scrollTop();
 
@@ -138,8 +142,9 @@ function animeScroll(){
 
 
 	});
-}//fim anime scrol
-animeScroll();
-$(document).scroll(function(){
+	}//fim anime scrol
 	animeScroll();
-});
+	$(document).scroll(function(){
+	animeScroll();
+	});
+}) ();
